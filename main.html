@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <script type="module">
+    import functionsDialogBox from './dialogBox.js';
+    window.callShowDialogBox = function(dialog) {
+      functionsDialogBox.showDialog(dialog);
+    }
+    window.callCloseDialogBox = function(dialog) {
+      functionsDialogBox.closeDialog(dialog);
+    }
+  </script>
+  <script src="menu.js" type="module"></script>
+  <script src="main.js" type="module"></script>
+  <title>Postagens TODO</title>
+</head>
+<body>
+  <div class="container">
+    <div class="top-content">
+      <h2>Minhas Tarefas</h2>
+
+      <div class="hamburger-menu-mobile">
+        <input id="menu__toggle-mobile" type="checkbox" />
+        <span id="menu-mobile">Menu</span>
+        <label class="menu__btn-mobile" for="menu__toggle-mobile">
+          <span></span>
+        </label>
+    
+        <ul class="menu__box-mobile">
+          <button id="close-menu-mobile">x</button>
+          <li><button onclick="callShowDialogBox('dialog-box1')" class="menu__item-mobile">Inserir</button></li>
+          <li><button onclick="callShowDialogBox('dialog-box2')" class="menu__item-mobile">Buscar</button></li>
+          <li><button onclick="callShowDialogBox('dialog-box3')" class="menu__item-mobile" id="dialog-box-excluir">Excluir</button></li>
+        </ul>
+      </div>
+
+      <div class="social-medias">
+        <a href="https://www.facebook.com/felipe.bigarelli.costa/">
+          <img id="facebook" src="/assets/facebook.png" alt="Facebook">
+        </a>
+        <a href="https://twitter.com/">
+          <img id="twitter" src="/assets/twitter.png" alt="Twitter">
+        </a>
+        <a href="https://www.instagram.com/zbigabiga/">
+          <img id="instagram" src="/assets/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://github.com/FelipeBigarelli/">
+          <img id="github" src="/assets/github.png" alt="Github">
+        </a>
+        <a href="https://www.linkedin.com/in/felipe-bigarelli-a01680195/">
+          <img id="linkedin" src="/assets/linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+
+    <div class="hamburger-menu">
+      <input id="menu__toggle" type="checkbox" />
+      <span id="menu">Menu</span>
+      <label class="menu__btn" for="menu__toggle">
+        <span></span>
+      </label>
+  
+      <ul class="menu__box">
+        <li><button onclick="callShowDialogBox('dialog-box1')" class="menu__item">Inserir</button></li>
+        <li><button onclick="callShowDialogBox('dialog-box2')" class="menu__item">Buscar</button></li>
+        <li><button onclick="callShowDialogBox('dialog-box3')" class="menu__item" id="dialog-box-excluir">Excluir</button></li>
+      </ul>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="dialog-box1" class="dialog-box">
+        <h2>Inserir nova Tarefa</h2>
+        <form id="todoForm">
+            <label for="title">Título:&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="title" name="title"><br><br>
+
+            <label for="date">Data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="date" id="date" name="date"><br><br>
+
+            <label for="description">Descrição:</label>
+            <input type="text" id="description" name="description"><br><br>
+
+            <button type="submit" id="enviar-form">Enviar</button>
+        </form>
+        <button id="close-dialog1" onclick="callCloseDialogBox('dialog-box1')">Fechar</button>
+    </div>
+
+    <div id="dialog-box2" class="dialog-box">
+      <h2>Buscar Tarefa</h2>
+      <input type="text" id="filtroTitulo" placeholder="Digite o título">
+      <input type="date" id="filtroData">
+      <button id="filtrarButton">Filtrar</button>
+
+      <div id="resultadoFiltro">
+      </div>
+      
+      <button id="close-dialog2" onclick="callCloseDialogBox('dialog-box2')">Fechar</button>
+  </div>
+
+  <div id="dialog-box3" class="dialog-box">
+    <h2>Excluir Tarefa</h2>
+      <!-- <input type="text" id="filtroTituloExcluir" placeholder="Digite o título">
+      <input type="date" id="filtroDataExcluir"> -->
+      <div id="listaExcluir">
+      </div>
+
+    <button id="close-dialog3" onclick="callCloseDialogBox('dialog-box3')">Fechar</button>
+</div>
+
+    <div class="bottom-content">
+      <div class="posts-container">
+        <ul id="listaItens">
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
